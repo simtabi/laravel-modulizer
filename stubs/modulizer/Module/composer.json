@@ -1,0 +1,34 @@
+{
+    "name": "simtabi/{module}",
+    "description": "",
+    "authors": [
+        {
+            "name": "David Carr",
+            "email": "dave@dcblog.dev"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Simtabi\\Modules\\{Module}\\Database\\Factories\\": "database/Factories/",
+            "Simtabi\\Modules\\{Module}\\Database\\Seeders\\": "database/Seeders/",
+            "Simtabi\\Modules\\{Module}\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Simtabi\\Modules\\{Module}\\Providers\\{Module}ServiceProvider",
+                "Simtabi\\Modules\\{Module}\\Providers\\{Module}RouteServiceProvider.php"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}
+
