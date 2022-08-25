@@ -4,11 +4,12 @@ namespace Simtabi\Modulizer\Support;
 
 use Illuminate\Support\Str;
 use RuntimeException;
+use Simtabi\Modulizer\Traits\HasFileHandler;
 use Symfony\Component\Process\Process;
 
 class Conveyor
 {
-    use FileHandler;
+    use HasFileHandler;
 
     /**
      * Package vendor namespace.

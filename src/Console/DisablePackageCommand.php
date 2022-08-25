@@ -2,6 +2,9 @@
 
 namespace Simtabi\Modulizer\Console;
 
+use Simtabi\Modulizer\Support\Conveyor;
+use Simtabi\Modulizer\Support\Wrapper;
+
 class DisablePackageCommand extends BaseCommand
 {
     /**
@@ -30,16 +33,16 @@ class DisablePackageCommand extends BaseCommand
      *
      * @var object \Simtabi\Modulizer\Support\Wrapping
      */
-    protected $wrapping;
+    protected $wrapper;
 
     /**
      * Create a new command instance.
      */
-    public function __construct(Conveyor $conveyor, Wrapping $wrapper)
+    public function __construct(Conveyor $conveyor, Wrapper $wrapper)
     {
         parent::__construct();
         $this->conveyor = $conveyor;
-        $this->wrapping = $wrapper;
+        $this->wrapper  = $wrapper;
     }
 
     /**

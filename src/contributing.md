@@ -12,7 +12,7 @@ If you want to run the test suite of Laravel Modulizer, try out the `composer te
 ## Things To Do
 If you want to contribute but do not know where to start, this list provides some starting points.
 - Test for several commands, as well as the different options.
-- Test the Conveyor and Wrapping on their own.
+- Test the Conveyor and Wrapper on their own.
 - Test `publish` and `tests` command.
 - Removing a package leaves (multiple) whitespaces in app.php and composer.json. Can this be done differently?
 

@@ -2,7 +2,6 @@
 
 namespace Simtabi\Modulizer\Console;
 
-use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
 /**

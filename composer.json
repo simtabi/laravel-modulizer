@@ -31,5 +31,8 @@
                 "Modulizer": "Simtabi\\Modulizer\\Facades\\ModulizerFacade"
             }
         }
+    },
+    "suggest": {
+        "sensiolabs/security-checker": "Required to use the security check command"
     }
 }

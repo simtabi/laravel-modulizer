@@ -2,7 +2,6 @@
 
 namespace Simtabi\Modulizer\Console;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 

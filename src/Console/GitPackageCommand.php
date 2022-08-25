@@ -2,7 +2,6 @@
 
 namespace Simtabi\Modulizer\Console;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Simtabi\Modulizer\Support\Conveyor;
 use Simtabi\Modulizer\Support\Wrapper;

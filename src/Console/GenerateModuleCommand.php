@@ -2,7 +2,6 @@
 
 namespace Simtabi\Modulizer\Console;
 
-use Illuminate\Console\Command;
 use Illuminate\Contracts\Validation\Validator as ValidatorInterface;
 use Illuminate\Support\Facades\Validator;
 use Simtabi\Modulizer\Support\Conveyor;
