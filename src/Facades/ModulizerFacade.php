@@ -3,7 +3,7 @@
 namespace Simtabi\Modulizer\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Simtabi\Laflamoji\Laflamoji;
+use Simtabi\Modulizer\Modulizer;
 
 class ModulizerFacade extends Facade
 {
