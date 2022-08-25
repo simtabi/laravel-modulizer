@@ -9,7 +9,7 @@ use Simtabi\Modulizer\Helpers\ModuleHelpers;
 class ModuleRouteServiceProvider extends ServiceProvider
 {
     protected string $moduleNamespace  = 'Simtabi\Modules\{Module}\Http\Controllers';
-    protected const  MODULE_DIR_PATH   = __DIR__.'../../';
+    protected const  MODULE_DIR_PATH   = __DIR__.'/../../';
 
     public function register()
     {

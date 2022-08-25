@@ -10,7 +10,7 @@ class {Module}ServiceProvider extends ServiceProvider
 {
     protected string $moduleName       = '{Module}';
     protected string $moduleNameLower  = '{module}';
-    protected const  MODULE_DIR_PATH   = __DIR__.'../../';
+    protected const  MODULE_DIR_PATH   = __DIR__.'/../../';
 
     public function boot()
     {

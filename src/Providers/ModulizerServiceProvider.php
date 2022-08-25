@@ -9,7 +9,7 @@ use Simtabi\Modulizer\Helpers\ModuleHelpers;
 class ModulizerServiceProvider extends ServiceProvider
 {
 
-    protected const BASE_PATH = __DIR__.'../../';
+    protected const BASE_PATH = __DIR__.'/../../';
 
     public function register()
     {
