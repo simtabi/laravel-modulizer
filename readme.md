@@ -6,10 +6,6 @@ Laravel package for generating [Laravel Modules](https://github.com/nWidart/lara
 
 Laravel 8 or 9 and PHP 8.0
 
-## Video demo
-
-You can see a video demo on [YouTube](https://www.youtube.com/watch?v=DDjAcQolzwM)
-
 # Install
 
 You can install the package via composer:
