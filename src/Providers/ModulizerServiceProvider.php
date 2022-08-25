@@ -3,7 +3,17 @@
 namespace Simtabi\Modulizer\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Simtabi\Modulizer\Console\Commands\MakeGeneratorCommand;
+use Simtabi\Modulizer\Console\CheckModuleSecurityCommand;
+use Simtabi\Modulizer\Console\DisablePackageCommand;
+use Simtabi\Modulizer\Console\EnableModuleCommand;
+use Simtabi\Modulizer\Console\GenerateModuleCommand;
+use Simtabi\Modulizer\Console\GenerateNewModuleCommand;
+use Simtabi\Modulizer\Console\GetModuleCommand;
+use Simtabi\Modulizer\Console\GitPackageCommand;
+use Simtabi\Modulizer\Console\ListLocallyInstalledPackagesCommand;
+use Simtabi\Modulizer\Console\MoveTestsCommand;
+use Simtabi\Modulizer\Console\PublishModuleCommand;
+use Simtabi\Modulizer\Console\RemoveModuleCommand;
 use Simtabi\Modulizer\Helpers\ModuleHelpers;
 
 class ModulizerServiceProvider extends ServiceProvider
@@ -26,7 +36,17 @@ class ModulizerServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                MakeGeneratorCommand::class,
+                CheckModuleSecurityCommand::class,
+                DisablePackageCommand::class,
+                EnableModuleCommand::class,
+                GenerateModuleCommand::class,
+                GenerateNewModuleCommand::class,
+                GetModuleCommand::class,
+                GitPackageCommand::class,
+                ListLocallyInstalledPackagesCommand::class,
+                MoveTestsCommand::class,
+                PublishModuleCommand::class,
+                RemoveModuleCommand::class,
             ]);
         }
     }

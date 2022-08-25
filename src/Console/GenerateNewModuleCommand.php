@@ -1,15 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Simtabi\Modulizer\Console\Commands;
+namespace Simtabi\Modulizer\Console;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Simtabi\Modulizer\Helpers\ModuleHelpers;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
 
-class MakeGeneratorCommand extends Command
+class GenerateNewModuleCommand extends BaseCommand
 {
     protected const BASE_PATH = __DIR__ . '/../../../';
     protected $signature      = 'modulizer:module:build';
@@ -26,6 +25,9 @@ class MakeGeneratorCommand extends Command
         $this->container['name'] = ucwords($this->ask('Please enter a name'));
         $modulesPath             = ModuleHelpers::getModulesPath($this->container['name']);
         $stubsPath               = ModuleHelpers::getStubsPath();
+
+        // Start the progress bar
+        $this->startProgressBar(2);
 
         if (strlen($this->container['name']) == 0) {
             $this->error("\nName cannot be empty.");
@@ -46,13 +48,16 @@ class MakeGeneratorCommand extends Command
         $this->generate($this->container['name']);
 
         $this->info('Starter '.$this->container['name'].' module generated successfully.');
+
+        // Finished removing the package, end of the progress bar
+        $this->finishProgress('Package disabled successfully!');
     }
 
     protected function generate(string $moduleName)
     {
         $tempFolderPath = storage_path('modulizer-temp');
         $modulePath     = ModuleHelpers::getModulesPath(Str::lower($moduleName));
-        
+
         //ensure directory does not exist
         $this->delete($tempFolderPath);
 
@@ -68,10 +73,12 @@ class MakeGeneratorCommand extends Command
         $this->updateFilesContent($finder);
 
         ModuleHelpers::ensureFolderExists($modulePath);
-        
+
         $this->copy($tempFolderPath, $modulePath);
 
         $this->delete($tempFolderPath);
+
+        $this->makeProgress();
     }
 
     protected function updateFilesContent($finder)

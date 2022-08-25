@@ -1,6 +1,6 @@
 {
     "name": "simtabi/laravel-modulizer",
-    "description": "Generate Laravel Modules from a template.",
+    "description": "A CLI tool for creating Laravel packages(modules) skeleton.",
     "license": "MIT",
     "authors": [
         {
