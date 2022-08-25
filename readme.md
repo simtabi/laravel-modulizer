@@ -43,7 +43,7 @@ Create or update the stubs file. The filename and contents should have placehold
 
 Placeholders:
 
-These placeholders are replaced with the name provided when running `php artisan modulizer:module:build`
+These placeholders are replaced with the name provided when running `php artisan modulizer:module:generate`
 
 #### 1. Used in filenames:
 

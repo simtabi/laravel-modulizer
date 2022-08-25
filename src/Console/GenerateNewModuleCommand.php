@@ -11,7 +11,7 @@ use Symfony\Component\Finder\Finder;
 class GenerateNewModuleCommand extends BaseCommand
 {
     protected const BASE_PATH = __DIR__ . '/../../../';
-    protected $signature      = 'modulizer:module:build';
+    protected $signature      = 'modulizer:module:generate';
     protected $description    = 'Create starter module from a template';
     protected $caseTypes      = [
         'module' => 'strtolower',

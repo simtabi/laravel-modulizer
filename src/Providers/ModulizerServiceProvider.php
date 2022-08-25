@@ -39,7 +39,7 @@ class ModulizerServiceProvider extends ServiceProvider
                 CheckModuleSecurityCommand::class,
                 DisablePackageCommand::class,
                 EnableModuleCommand::class,
-                GenerateModuleCommand::class,
+                // GenerateModuleCommand::class,
                 GenerateNewModuleCommand::class,
                 GetModuleCommand::class,
                 GitPackageCommand::class,
