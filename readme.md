@@ -24,13 +24,13 @@ This will publish a `modulizer.php` config file
 
 This contains:
 ```php
-'path' => env('MODULE_GENERATOR_PATH', 'stubs/modulizer'),
+'path' => env('MODULIZER_STUBS_PATH', 'stubs/modulizer'),
 'ignore_files' => ['module.json']
 ```
 By default, the stubs will be located at stubs/modulizer you can add your own paths by adding your paths to your .env file or changing the config file.
 
 ```bash 
-MODULE_GENERATOR_PATH=your-location
+MODULIZER_STUBS_PATH=your-location
 ```
 
 # Usage

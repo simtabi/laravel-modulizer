@@ -3,15 +3,18 @@
 namespace Simtabi\Modulizer\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Simtabi\Modulizer\Helpers\ModuleHelpers;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
 
 class MakeGeneratorCommand extends Command
 {
-    protected $signature   = 'modulizer:module:build';
-    protected $description = 'Create starter module from a template';
-    protected $caseTypes   = [
+    protected const BASE_PATH = __DIR__ . '/../../../';
+    protected $signature      = 'modulizer:module:build';
+    protected $description    = 'Create starter module from a template';
+    protected $caseTypes      = [
         'module' => 'strtolower',
         'Module' => 'ucwords',
         'model'  => 'strtolower',
@@ -21,45 +24,54 @@ class MakeGeneratorCommand extends Command
     public function handle()
     {
         $this->container['name'] = ucwords($this->ask('Please enter a name'));
+        $modulesPath             = ModuleHelpers::getModulesPath($this->container['name']);
+        $stubsPath               = ModuleHelpers::getStubsPath();
+
         if (strlen($this->container['name']) == 0) {
             $this->error("\nName cannot be empty.");
             return $this->handle();
         } else {
-            if (file_exists(base_path('Modules/'.$this->container['name']))) {
-                $this->error("\nModule already exists.");
+            if (File::exists($modulesPath)) {
+                $this->error("\n{$this->container['name']} Module already exists.");
                 return true;
             }
         }
 
-        $this->container['folder'] =  config('modulizer.path');
-        if (!file_exists(base_path($this->container['folder']))) {
-            $this->error("\nPath does not exist.");
+        $this->container['folder'] =  config('modulizer.stubs_path');
+        if (!File::exists($stubsPath)) {
+            $this->error("\nModulizer stubs path does not exist.");
             return true;
         }
 
-        $this->generate();
+        $this->generate($this->container['name']);
 
         $this->info('Starter '.$this->container['name'].' module generated successfully.');
     }
 
-    protected function generate()
+    protected function generate(string $moduleName)
     {
+        $tempFolderPath = storage_path('modulizer-temp');
+        $modulePath     = ModuleHelpers::getModulesPath(Str::lower($moduleName));
+        
         //ensure directory does not exist
-        $this->delete(base_path('generator-temp'));
+        $this->delete($tempFolderPath);
 
-        $folder = $this->container['folder'];
-        $this->copy(base_path($folder), base_path('generator-temp'));
-        $folderPath = base_path('generator-temp');
+        $this->container['folder'] = ModuleHelpers::getStubsPath();
+        $folder                    = $this->container['folder'];
 
-        $finder = new Finder();
-        $finder->files()->in($folderPath);
+        $this->copy($folder, $tempFolderPath);
+
+        $finder     = new Finder();
+        $finder->files()->in($tempFolderPath);
 
         $this->renameFiles($finder);
         $this->updateFilesContent($finder);
 
-        $this->copy($folderPath, './Modules');
-        $this->delete('./Modules/Module');
-        $this->delete($folderPath);
+        ModuleHelpers::ensureFolderExists($modulePath);
+        
+        $this->copy($tempFolderPath, $modulePath);
+
+        $this->delete($tempFolderPath);
     }
 
     protected function updateFilesContent($finder)
@@ -157,7 +169,7 @@ class MakeGeneratorCommand extends Command
         ];
 
         foreach ($types as $key => $value) {
-            if (file_exists($sourceFile)) {
+            if (File::exists($sourceFile)) {
                 if ($key == '{Module_}') {
                     $parts = preg_split('/(?=[A-Z])/', $name, -1, PREG_SPLIT_NO_EMPTY);
                     $value = implode('_', $parts);
@@ -201,6 +213,7 @@ class MakeGeneratorCommand extends Command
                     $parts = preg_split('/(?=[A-Z])/', $model, -1, PREG_SPLIT_NO_EMPTY);
                     $value = implode('-', $parts);
                 }
+
                 file_put_contents($sourceFile, str_replace($key, $value, file_get_contents($sourceFile)));
             }
         }

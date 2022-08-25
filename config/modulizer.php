@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'path'         => env('MODULE_GENERATOR_PATH', 'stubs/modulizer'),
-    'ignore_files' => ['module.json']
+    'ignore_files' => ['module.json'],
+    'modules_path' => env('MODULIZER_MODULES_PATH', 'platform/modules'),
+    'stubs_path'   => env('MODULIZER_STUBS_PATH', 'stubs/module'),
 ];

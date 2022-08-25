@@ -2,7 +2,7 @@
 
 namespace Simtabi\Modulizer\Helpers;
 
-use File;
+use Illuminate\Support\Facades\File;
 
 class ModuleHelpers
 {
@@ -34,4 +34,45 @@ class ModuleHelpers
             File::requireOnce($helper);
         }
     }
+
+    /**
+     * Load modules stubs path
+     *
+     * @param string|null $directory
+     * @return string
+     * @since 2.0
+     */
+    public static function getStubsPath(?string $directory = null): string
+    {
+        $directory = !empty($directory) ? $directory : config('modulizer.stubs_path');
+
+        return self::getModuleDirPath(__DIR__ . '/../../', $directory);
+    }
+
+    /**
+     * Load modules path
+     *
+     * @param string|null $directory
+     * @return string
+     * @since 2.0
+     */
+    public static function getModulesPath(?string $directory = null): string
+    {
+        $directory = !empty($directory) ? $directory : "";
+
+        return base_path(config('modulizer.modules_path') . "/{$directory}");
+    }
+
+    /**
+     * Creates given directory if it doesn't exist
+     *
+     * @param string|null $directory
+     * @return string
+     * @since 2.0
+     */
+    public static function ensureFolderExists(string $path): void
+    {
+        File::ensureDirectoryExists($path);
+    }
+
 }

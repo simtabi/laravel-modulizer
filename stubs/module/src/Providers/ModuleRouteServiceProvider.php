@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Simtabi\Modulizer\Helpers\ModuleHelpers;
 
-class ModuleRouteServiceProvider extends ServiceProvider
+class {Module}RouteServiceProvider extends ServiceProvider
 {
-    protected string $moduleNamespace  = 'Simtabi\Modules\{Module}\Http\Controllers';
-    protected const  MODULE_DIR_PATH   = __DIR__.'/../../';
+    protected string $moduleNamespace = 'Simtabi\Modules\{Module}\Http\Controllers';
+    protected const  MODULE_DIR_PATH  = __DIR__.'/../../';
 
     public function register()
     {
