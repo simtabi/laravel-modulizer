@@ -25,10 +25,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ModulizerServiceProvider"
+                "Simtabi\\Modulizer\\Providers\\ModulizerServiceProvider"
             ],
             "aliases": {
-                "Generator": "Simtabi\\Modulizer\\Facades\\Modulizer"
+                "Modulizer": "Simtabi\\Modulizer\\Facades\\ModulizerFacade"
             }
         }
     }
