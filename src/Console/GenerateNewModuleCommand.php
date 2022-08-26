@@ -49,8 +49,8 @@ class GenerateNewModuleCommand extends BaseCommand
 
         $this->info('Starter '.$this->container['name'].' module generated successfully.');
 
-        // Finished removing the package, end of the progress bar
-        $this->finishProgress('Package disabled successfully!');
+        // Finished generating the package, end of the progress bar
+        $this->finishProgress('Module(package) generated successfully!');
     }
 
     protected function generate(string $moduleName)
