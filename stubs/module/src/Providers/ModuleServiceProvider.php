@@ -17,7 +17,7 @@ class {Module}ServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
-        $this->loadMigrationsFrom(ModuleHelpers::getModuleDirPath(self::MODULE_DIR_PATH, 'database/Migrations'));
+        $this->loadMigrationsFrom(ModuleHelpers::getModuleDirPath(self::MODULE_DIR_PATH, 'database/migrations'));
     }
 
     public function register()

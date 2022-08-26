@@ -3,14 +3,16 @@
     "description": "",
     "authors": [
         {
-            "name": "David Carr",
-            "email": "dave@dcblog.dev"
+            "name": "Imani Manyara",
+            "email": "imani@simtabi.com",
+            "homepage": "https://simtabi.com",
+            "role": "Developer"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Simtabi\\Modules\\{Module}\\Database\\Factories\\": "database/Factories/",
-            "Simtabi\\Modules\\{Module}\\Database\\Seeders\\": "database/Seeders/",
+            "Simtabi\\Modules\\{Module}\\Database\\Factories\\": "database/factories/",
+            "Simtabi\\Modules\\{Module}\\Database\\Seeders\\": "database/seeders/",
             "Simtabi\\Modules\\{Module}\\": "src"
         }
     },
